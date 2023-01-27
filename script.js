@@ -1,16 +1,16 @@
 var breedImage = $("#breed-image");
-var dropdown = $("#dog-breeds");
+var dropDown = $("#dog-breeds");
 var allowSubmit = true;
 var breed;
 
 $.get("https://dog.ceo/api/breeds/list/all", function (data, status) {
     let dogBreeds = data.message;
     for (let breed in dogBreeds) {
-        dropdown.append('<option value="' + breed + '">' + breed + '</option>');
+        dropDown.append('<option value="' + breed + '">' + breed + '</option>');
     }
 });
 
-dropdown.change(function () {
+dropDown.change(function () {
     allowSubmit = true;
 });
 
@@ -18,7 +18,7 @@ $("form button").click(function (e) {
     e.preventDefault();
 
     if (allowSubmit) {
-        breed = dropdown.val();
+        breed = dropDown.val();
         displayDog(breed);
         allowSubmit = false;
     }
